@@ -34,7 +34,47 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void Random(int score){
+    public int Random(int score){
+        int max=1;
+        int min=100;
+        int x = 0;
+        double kvant;
+        kvant = Math.random();
+        x = (int) (Math.random()*(((max-min)+1))+min);
+        if (score <= 1000) {
+            if (kvant > 0.4){
+                kvant = Math.random();
+                if (kvant > 0.4) score = score*x;
+                else score = score + x;
+            }else{
+                kvant = Math.random();
+                if (kvant > 0.8) score = score/x;
+                else score = score - x;
+            }
+        }else{
+            if (kvant > 0.4){
+                kvant = Math.random();
+                if (kvant > 0.8) score = score*x;
+                else score = score + x;
+            }else{
+                kvant = Math.random();
+                if (kvant > 0.5) score = score/x;
+                else score = score - x;
+            }
+        }
+        return score;
+
+
+    }
+
+    public void Play(View v){
+        int stavka = 0;
+        try{
+            stavka = Integer.parseInt(money.getText().toString());
+        }catch (NumberFormatException e){
+
+        }
+
 
     }
 
