@@ -5,4 +5,5 @@
     <string name="conclusion">Вывести</string>
     <string name="bank_card">Введите данные своей банкоовской карты</string>
     <string name="bet">Введите свою ставку (Только число)</string>
+    <string name="play">Сыграть!</string>
 </resources>
