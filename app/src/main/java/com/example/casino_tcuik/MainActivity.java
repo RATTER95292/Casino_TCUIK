@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         try{
             stavka = Integer.parseInt(money.getText().toString());
         }catch (NumberFormatException e){
+
+            Toast.makeText(this,getResources().getString(R.string.error_messege),Toast.LENGTH_LONG).show();
 
         }
 
