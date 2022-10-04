@@ -17,7 +17,7 @@
         android:scaleType="fitStart"
         android:src="@drawable/unnamed"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginVertical="40dp" />
 
     <TextView
         android:id="@+id/score"
@@ -34,7 +34,7 @@
         android:id="@+id/money"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bet"/>
+        android:hint="@string/bet"/>
 
     <Button
         android:id="@+id/play"

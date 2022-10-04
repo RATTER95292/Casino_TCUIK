@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView score1,itog;
     EditText money;
     Button play,input,cut;
-    int score = 1000;
+    int score = 0;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             itog.setText(getResources().getString(R.string.Lose) + " " + stavka1);
         }
-        score = stavka + score;
+        score = itog_stavka + score;
         stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
         score1.setText(getResources().getString(R.string.Balance) + " " + stavka1);
 

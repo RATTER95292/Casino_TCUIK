@@ -8,8 +8,9 @@
     <string name="bank_card">Введите данные своей банкоовской карты</string>
     <string name="bet">Введите свою ставку (Только число)</string>
     <string name="play">Сыграть!</string>
+    <string name="sum">Введите сумму</string>
     <string name="error_messege">Это не целое число или у тебя нет столько денег </string>
     <string name="title_activity_main2">MainActivity2</string>
-    <string name="tab_text_1">Tab 1</string>
+    <string name="mmm">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 </resources>
