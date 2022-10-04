@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Casino_TCUIK</string>
-    <string name="Balance">У тебя на счету %d</string>
+    <string name="Balance">У тебя на счету </string>
+    <string name="Win">Вы выйграли!!!</string>
+    <string name="Lose">Вы проиграли... </string>
     <string name="input">Ввести</string>
     <string name="conclusion">Вывести</string>
     <string name="bank_card">Введите данные своей банкоовской карты</string>
     <string name="bet">Введите свою ставку (Только число)</string>
     <string name="play">Сыграть!</string>
-    <string name="error_messege">Это не целое число или у тебя не столько денег </string>
+    <string name="error_messege">Это не целое число или у тебя нет столько денег </string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

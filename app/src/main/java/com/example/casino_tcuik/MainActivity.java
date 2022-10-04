@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView score1,itog;
     EditText money;
     Button play,input,cut;
-    int score = 0;
+    int score = 1000;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -70,13 +70,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void Play(View v){
         int stavka = 0;
+        itog.setText("");
         try{
             stavka = Integer.parseInt(money.getText().toString());
         }catch (NumberFormatException e){
 
             Toast.makeText(this,getResources().getString(R.string.error_messege),Toast.LENGTH_LONG).show();
+            itog.setText("");
+            return;
 
         }
+        int itog_stavka = Random(stavka);
+        int difference = score - itog_stavka;
+        String stavka1 = getResources().getQuantityString(R.plurals.money, difference, difference);
+        if (difference >= 0){
+            itog.setText(getResources().getString(R.string.Win) + " " + stavka1);
+        }else{
+            itog.setText(getResources().getString(R.string.Lose) + " " + stavka1);
+        }
+        score = stavka + score;
+        stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
+        score1.setText(getResources().getString(R.string.Balance) + " " + stavka1);
+
+
 
 
     }
