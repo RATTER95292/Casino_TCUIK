@@ -14,4 +14,6 @@
     <string name="back">назад</string>
     <string name="Bonus">Вам бонусные 1000 рублей!</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="menu1"></string>
+    <string name="menu2"></string>
 </resources>

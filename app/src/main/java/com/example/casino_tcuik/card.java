@@ -24,10 +24,8 @@ public class card extends AppCompatActivity {
 
         if (choseBtn == "1"){
             but.setText("@string/input");
-
         }else{
             but.setText("@string/conclusion");
-            
         }
 
 
