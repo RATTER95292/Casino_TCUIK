@@ -12,13 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String CHOISES = " ";
+    public static final String SCORE = " ";
 
     TextView score1,itog;
     EditText money;
     Button play,input,cut;
-    int score = 0;
+    int score = 1000;
 
-    @SuppressLint("MissingInflatedId")
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,35 +35,51 @@ public class MainActivity extends AppCompatActivity {
         cut = (Button)findViewById(R.id.con);
         String end = getResources().getQuantityString(R.plurals.money, score, score);
 
+        Toast.makeText(this,getResources().getString(R.string.Bonus),Toast.LENGTH_LONG).show();
+
+        String stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
+        score1.setText(getResources().getString(R.string.Balance) + " " + stavka1);
 
     }
 
     public int Random(int score){
-        int max=1;
-        int min=100;
-        int x = 0;
+        int max=100;
+        int min=2;
+        int x;
         double kvant;
         kvant = Math.random();
         x = (int) (Math.random()*(((max-min)+1))+min);
         if (score <= 1000) {
             if (kvant > 0.4){
                 kvant = Math.random();
-                if (kvant > 0.4) score = score*x;
-                else score = score + x;
+                if (kvant > 0.4) {
+                    score = score * x;
+                } else {
+                    score = score + x;
+                }
             }else{
                 kvant = Math.random();
-                if (kvant > 0.8) score = score/x;
-                else score = score - x;
+                if (kvant > 0.8) {
+                    score = score/x;
+                } else {
+                    score = score - x;
+                }
             }
         }else{
             if (kvant > 0.4){
                 kvant = Math.random();
-                if (kvant > 0.8) score = score*x;
-                else score = score + x;
+                if (kvant > 0.8) {
+                    score = score * x;
+                }else {
+                    score = score + x;
+                }
             }else{
                 kvant = Math.random();
-                if (kvant > 0.5) score = score/x;
-                else score = score - x;
+                if (kvant > 0.5) {
+                    score = score/x;
+                } else {
+                    score = score - x;
+                }
             }
         }
         return score;
@@ -70,45 +89,50 @@ public class MainActivity extends AppCompatActivity {
 
     public void Play(View v){
         int stavka = 0;
-        itog.setText("");
+        score = score - stavka;
         try{
             stavka = Integer.parseInt(money.getText().toString());
+            int score_qest = score - stavka;
+            if(score_qest < 0) {
+                Toast.makeText(this, getResources().getString(R.string.error_messege), Toast.LENGTH_LONG).show();
+                return;
+            }
         }catch (NumberFormatException e){
-
             Toast.makeText(this,getResources().getString(R.string.error_messege),Toast.LENGTH_LONG).show();
             itog.setText("");
             return;
-
         }
         int itog_stavka = Random(stavka);
-        int difference = score - itog_stavka;
-        String stavka1 = getResources().getQuantityString(R.plurals.money, difference, difference);
-        if (difference >= 0){
+
+        String stavka1 = getResources().getQuantityString(R.plurals.money, itog_stavka, itog_stavka);
+
+        if ( itog_stavka > 0){
             itog.setText(getResources().getString(R.string.Win) + " " + stavka1);
+            score = score + itog_stavka;
         }else{
             itog.setText(getResources().getString(R.string.Lose) + " " + stavka1);
+            score = score - itog_stavka;
         }
-        score = itog_stavka + score;
-        stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
-        score1.setText(getResources().getString(R.string.Balance) + " " + stavka1);
 
+        String score_rub = getResources().getQuantityString(R.plurals.money, score, score);
 
-
+        score1.setText(getResources().getString(R.string.Balance) + " " + score_rub);
 
     }
 
     public void Click(View v){
         Intent intent = new Intent(this, card.class);
-        int choseBtn = 0;
+        String choseBtn = " ";
         if (v.getId() == R.id.inp)
         {
-            choseBtn = 1;
+            choseBtn = "0";
         }
         else{
-            choseBtn = 2;
+            choseBtn = "1";
         }
 
-        intent.putExtra("chose", choseBtn);
+        intent.putExtra(CHOISES, choseBtn);
+        intent.putExtra(SCORE,score);
         startActivity(intent);
     }
 }

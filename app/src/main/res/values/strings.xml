@@ -11,6 +11,7 @@
     <string name="sum">Введите сумму</string>
     <string name="error_messege">Это не целое число или у тебя нет столько денег </string>
     <string name="title_activity_main2">MainActivity2</string>
-    <string name="mmm">Tab 1</string>
+    <string name="back">назад</string>
+    <string name="Bonus">Вам бонусные 1000 рублей!</string>
     <string name="tab_text_2">Tab 2</string>
 </resources>

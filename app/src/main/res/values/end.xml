@@ -3,6 +3,6 @@
     <plurals name="money">
         <item quantity="one">%d рубль</item>
         <item quantity="few">%d рубля</item>
-        <item quantity="many">%d рублей</item>
+        <item quantity="other">%d рублей</item>
     </plurals>
 </resources>
