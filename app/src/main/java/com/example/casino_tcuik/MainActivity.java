@@ -1,15 +1,20 @@
 package com.example.casino_tcuik;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CHOISES = " ";
@@ -40,6 +45,32 @@ public class MainActivity extends AppCompatActivity {
         String stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
         score1.setText(getResources().getString(R.string.Balance) + " " + stavka1);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id = item.getItemId();
+        switch (id){
+            case R.id.main_magazine:
+                // Переход в магазин
+                return true;
+
+            case R.id.lider_board:
+                // переход в рейтинг
+                return true;
+
+            case R.id.corporation:
+                // о корпорации
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public int Random(int score){
@@ -82,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
         return score;
 
 
@@ -93,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             stavka = Integer.parseInt(money.getText().toString());
             int score_qest = score - stavka;
-            if(score_qest < 0) {
+            if(score_qest < 0 || stavka < 0) {
                 Toast.makeText(this, getResources().getString(R.string.error_messege), Toast.LENGTH_LONG).show();
                 return;
             }
@@ -105,13 +137,15 @@ public class MainActivity extends AppCompatActivity {
         int itog_stavka = Random(stavka);
 
         String stavka1 = getResources().getQuantityString(R.plurals.money, itog_stavka, itog_stavka);
+        Random objGenerator =  new Random();
+        int randomNumber = 0;
+        randomNumber = objGenerator.nextInt(2);
 
-        if ( itog_stavka > 0){
+        if ( randomNumber > 1){
             itog.setText(getResources().getString(R.string.Win) + " " + stavka1);
             score = score + itog_stavka;
         }else{
-            itog.setText(getResources().getString(R.string.Lose) + " " + stavka1);
-            score = score - itog_stavka;
+            itog.setText(getResources().getString(R.string.Lose));
         }
 
         String score_rub = getResources().getQuantityString(R.plurals.money, score, score);
