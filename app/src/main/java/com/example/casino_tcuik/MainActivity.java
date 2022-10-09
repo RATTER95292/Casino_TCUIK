@@ -17,9 +17,10 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String CHOISES = " ";
-    public static final String SCORE = " ";
+    public static final String CHOISES = "hhh";
+    public static final String SCORE = "hhh";
 
+    String choseBtn = " ";
     TextView score1,itog;
     EditText money;
     Button play,input,cut;
@@ -76,24 +77,26 @@ public class MainActivity extends AppCompatActivity {
     public int Random(int score){
         int max=100;
         int min=2;
-        int x;
-        double kvant;
-        kvant = Math.random();
-        x = (int) (Math.random()*(((max-min)+1))+min);
-        if (score <= 1000) {
+        int x = (int) (Math.random()*(((max-min)+1))+min);
+        double kvant = Math.random();
+        if (score <= 500) {
             if (kvant > 0.4){
                 kvant = Math.random();
-                if (kvant > 0.4) {
+                if (kvant > 0.9) {
                     score = score * x;
+                    return score;
                 } else {
                     score = score + x;
+                    return score;
                 }
             }else{
                 kvant = Math.random();
                 if (kvant > 0.8) {
                     score = score/x;
+                    return score;
                 } else {
                     score = score - x;
+                    return score;
                 }
             }
         }else{
@@ -101,22 +104,22 @@ public class MainActivity extends AppCompatActivity {
                 kvant = Math.random();
                 if (kvant > 0.8) {
                     score = score * x;
+                    return score;
                 }else {
                     score = score + x;
+                    return score;
                 }
             }else{
                 kvant = Math.random();
                 if (kvant > 0.5) {
                     score = score/x;
+                    return score;
                 } else {
                     score = score - x;
+                    return score;
                 }
             }
         }
-
-        return score;
-
-
     }
 
     public void Play(View v){
@@ -139,34 +142,36 @@ public class MainActivity extends AppCompatActivity {
         String stavka1 = getResources().getQuantityString(R.plurals.money, itog_stavka, itog_stavka);
         Random objGenerator =  new Random();
         int randomNumber = 0;
-        randomNumber = objGenerator.nextInt(2);
+        randomNumber = objGenerator.nextInt(3);
 
-        if ( randomNumber > 1){
+        if ( randomNumber >= 2){
             itog.setText(getResources().getString(R.string.Win) + " " + stavka1);
             score = score + itog_stavka;
         }else{
-            itog.setText(getResources().getString(R.string.Lose));
+            score = score - stavka;
+            String stav = getResources().getQuantityString(R.plurals.money, stavka, stavka);
+            itog.setText(getResources().getString(R.string.Lose)+""+stav);
         }
 
         String score_rub = getResources().getQuantityString(R.plurals.money, score, score);
 
         score1.setText(getResources().getString(R.string.Balance) + " " + score_rub);
 
+
     }
 
     public void Click(View v){
         Intent intent = new Intent(this, card.class);
-        String choseBtn = " ";
         if (v.getId() == R.id.inp)
         {
-            choseBtn = "0";
+            choseBtn = "1";
         }
         else{
-            choseBtn = "1";
+            choseBtn = "0";
         }
 
         intent.putExtra(CHOISES, choseBtn);
         intent.putExtra(SCORE,score);
-        startActivity(intent);
+        startActivityForResult(intent, Integer.parseInt(SCORE));
     }
 }
