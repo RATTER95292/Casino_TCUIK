@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,9 +19,9 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CHOISES = "hhh";
-    public static final String SCORE = "hhh";
+    public static final String SCORE = "hhh111";
 
-    String choseBtn = " ";
+    String choseBtn = "7";
     TextView score1,itog;
     EditText money;
     Button play,input,cut;
@@ -157,10 +158,8 @@ public class MainActivity extends AppCompatActivity {
         else{
             choseBtn = "0";
         }
-
         intent.putExtra(CHOISES, choseBtn);
         intent.putExtra(SCORE,score);
-        startActivityForResult(intent, Integer.parseInt(SCORE));
         startActivity(intent);
     }
 }
