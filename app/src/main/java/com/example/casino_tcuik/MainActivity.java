@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText money;
     Button play,input,cut;
     int score = 1000;
+    double a = 0.1;
 
 
 
@@ -58,16 +59,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
         switch (id){
+            // Переход в магазин
             case R.id.main_magazine:
-                // Переход в магазин
+                Intent intent = new Intent(this, magazine.class);
+                startActivity(intent);
                 return true;
 
+            // переход в рейтинг
             case R.id.lider_board:
-                // переход в рейтинг
+                Intent intent1 = new Intent(this, lider_board.class);
+                startActivity(intent1);
                 return true;
-
+            // о корпорации
             case R.id.corporation:
-                // о корпорации
+                Intent intent2 = new Intent(this, corporations.class);
+                startActivity(intent2);
                 return true;
 
         }
@@ -79,45 +85,27 @@ public class MainActivity extends AppCompatActivity {
         int min=2;
         int x = (int) (Math.random()*(((max-min)+1))+min);
         double kvant = Math.random();
-        if (score <= 500) {
-            if (kvant > 0.4){
-                kvant = Math.random();
-                if (kvant > 0.9) {
-                    score = score * x;
-                    return score;
-                } else {
-                    score = score + x;
-                    return score;
+        a += 0.2;
+        if (a == 0.9){
+            a = 0.1;
+        }
+        if (kvant > a){
+            kvant = Math.random();
+            if (kvant > (a + 0.2) ) {
+                score = score * x;
+                return score;
+            } else {
+                score = score + x;
+                return score;
                 }
-            }else{
-                kvant = Math.random();
-                if (kvant > 0.8) {
-                    score = score/x;
-                    return score;
-                } else {
-                    score = score - x;
-                    return score;
-                }
-            }
         }else{
-            if (kvant > 0.4){
-                kvant = Math.random();
-                if (kvant > 0.8) {
-                    score = score * x;
-                    return score;
-                }else {
-                    score = score + x;
-                    return score;
-                }
-            }else{
-                kvant = Math.random();
-                if (kvant > 0.5) {
-                    score = score/x;
-                    return score;
-                } else {
-                    score = score - x;
-                    return score;
-                }
+            kvant = Math.random();
+            if (kvant > a + 0.2) {
+                score = score/x;
+                return score;
+            } else {
+                score = score - x;
+                return score;
             }
         }
     }
@@ -128,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             stavka = Integer.parseInt(money.getText().toString());
             int score_qest = score - stavka;
-            if(score_qest < 0 || stavka < 0) {
+            if(score_qest < 0 || stavka < 100 ) {
                 Toast.makeText(this, getResources().getString(R.string.error_messege), Toast.LENGTH_LONG).show();
                 return;
             }
@@ -137,12 +125,12 @@ public class MainActivity extends AppCompatActivity {
             itog.setText("");
             return;
         }
-        int itog_stavka = Random(stavka);
+        int itog_stavka =  Math.abs(Random(stavka));
 
         String stavka1 = getResources().getQuantityString(R.plurals.money, itog_stavka, itog_stavka);
         Random objGenerator =  new Random();
         int randomNumber = 0;
-        randomNumber = objGenerator.nextInt(3);
+        randomNumber = objGenerator.nextInt(4);
 
         if ( randomNumber >= 2){
             itog.setText(getResources().getString(R.string.Win) + " " + stavka1);
@@ -173,5 +161,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(CHOISES, choseBtn);
         intent.putExtra(SCORE,score);
         startActivityForResult(intent, Integer.parseInt(SCORE));
+        startActivity(intent);
     }
 }

@@ -4,21 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".corporations">
-
+    tools:context=".magazine">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="484dp"
+        android:layout_marginTop="52dp"
         android:gravity="center"
-        android:text="@string/headline_corporayion"
+        android:text="@string/headline_magazine"
         android:textAllCaps="true"
         android:textColor="#992667"
         android:textSize="40dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="164dp"
+        android:gravity="center"
+        android:text="@string/Balance"
+        android:textColor="@color/black"
+        android:textSize="30dp"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-68dp" />
+        tools:layout_editor_absoluteX="16dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
