@@ -69,6 +69,7 @@
 
 
     <EditText
+        android:id="@+id/editText1"
         android:layout_width="51dp"
         android:layout_height="31dp"
         android:layout_marginStart="316dp"
@@ -94,6 +95,7 @@
         android:layout_marginBottom="116dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="inp_con"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

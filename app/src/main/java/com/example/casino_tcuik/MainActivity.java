@@ -18,8 +18,8 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String CHOISES = "hhh";
-    public static final String SCORE = "hhh111";
+    public static final String CHOISES = "choises";
+    public static final String SCORE = "score";
 
     String choseBtn = "7";
     TextView score1,itog;
@@ -60,17 +60,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
         switch (id){
+
             // Переход в магазин
             case R.id.main_magazine:
                 Intent intent = new Intent(this, magazine.class);
+                intent.putExtra(SCORE,score);
                 startActivity(intent);
                 return true;
 
             // переход в рейтинг
             case R.id.lider_board:
                 Intent intent1 = new Intent(this, lider_board.class);
+                intent1.putExtra(SCORE,score);
                 startActivity(intent1);
                 return true;
+
             // о корпорации
             case R.id.corporation:
                 Intent intent2 = new Intent(this, corporations.class);
@@ -113,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void Play(View v){
         int stavka = 0;
-        score = score - stavka;
         try{
             stavka = Integer.parseInt(money.getText().toString());
             int score_qest = score - stavka;
@@ -158,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             choseBtn = "0";
         }
+
         intent.putExtra(CHOISES, choseBtn);
         intent.putExtra(SCORE,score);
         startActivity(intent);

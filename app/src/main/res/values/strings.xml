@@ -10,6 +10,9 @@
     <string name="play">Сыграть!</string>
     <string name="sum">Введите сумму</string>
     <string name="error_messege">Эта ставка слишком маленькая или у тебя нет столько денег </string>
+    <string name="error_messege1">Что самый умный что ли? </string>
+    <string name="error_messege2">Введит все данные своей карты</string>
+    <string name="error_messege3">Ваш счеет должен быть как минимум 20 000 000 000 000  </string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="back">назад</string>
     <string name="Bonus">Вам бонусные 1000 рублей!</string>
@@ -18,4 +21,6 @@
     <string name="headline_magazine">Магазин 1000 мелочей</string>
     <string name="headline_lider_board">Рейтинг богачей ТКУИКа</string>
     <string name="headline_corporayion">Казино создал Рябов Артем из корпорации В.С.Ч.Р</string>
+    <string name="Buy">Купить</string>
+
 </resources>
