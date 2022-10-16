@@ -9,7 +9,7 @@
     <string name="bet">Введите свою ставку (Только число)</string>
     <string name="play">Сыграть!</string>
     <string name="sum">Введите сумму</string>
-    <string name="error_messege">Эта ставка слишком маленькая или у тебя нет столько денег </string>
+    <string name="error_messege">Минимальная ставка 100 рублей или у тебя нет столько денег </string>
     <string name="error_messege1">Что самый умный что ли? </string>
     <string name="error_messege2">Введит все данные своей карты</string>
     <string name="error_messege3">Ваш счеет должен быть как минимум 20 000 000 000 000  </string>

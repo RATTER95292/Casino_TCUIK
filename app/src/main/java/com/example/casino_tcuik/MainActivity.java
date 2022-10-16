@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -142,9 +143,11 @@ public class MainActivity extends AppCompatActivity {
         randomNumber = objGenerator.nextInt(4);
 
         if ( randomNumber >= 2){
+            itog.setTextColor(Color.GREEN);
             itog.setText(getResources().getString(R.string.Win) + " " + stavka1);
             score = score + itog_stavka;
         }else{
+            itog.setTextColor(Color.RED);
             score = score - stavka;
             String stav = getResources().getQuantityString(R.plurals.money, stavka, stavka);
             itog.setText(getResources().getString(R.string.Lose)+""+stav);

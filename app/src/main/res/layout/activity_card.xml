@@ -24,7 +24,7 @@
         android:gravity="center"
         android:text="@string/bank_card"
         android:textColor="#F00"
-        android:textSize="30dp"
+        android:textSize="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,13 +85,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="228dp"
         android:hint="@string/sum"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/dialog_button"
-        android:layout_width="209dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input"
+        android:textSize="40dp"
         android:layout_marginBottom="116dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
