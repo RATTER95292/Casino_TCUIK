@@ -18,16 +18,16 @@ import java.util.Objects;
 public class card extends AppCompatActivity {
 
     public static final String SCORE_CARD = "6286415726843718617569362472726775462769";
+    public static final String BONUS_CARD = "934875934750328475384";
 
     Button but;
     TextView balance;
     String choseBtn="";
     String stavka1 = "";
     EditText edit_sum, card1, card2, card3, card4;
-    int score = 0;
+    int score;
+    boolean bonus;
 
-
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,7 @@ public class card extends AppCompatActivity {
 
     public void inp_con(View view){
 
-        int input = 0;
+        int input;
 
         try{
             input = Integer.parseInt(edit_sum.getText().toString());
@@ -75,14 +75,16 @@ public class card extends AppCompatActivity {
             }else{
                 score = 0;
                 Toast.makeText(this,getResources().getString(R.string.error_messege1),Toast.LENGTH_LONG).show();
-                return;
             }
+
             stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
             balance.setText(getResources().getString(R.string.Balance) + " " + stavka1);
 
             //передача данных на другой актив
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(SCORE_CARD,score);
+            bonus = true;
+            intent.putExtra(BONUS_CARD,bonus);
             startActivity(intent);
 
         }else{

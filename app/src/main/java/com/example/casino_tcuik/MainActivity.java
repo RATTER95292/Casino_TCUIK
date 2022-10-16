@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     TextView score1,itog;
     EditText money;
     Button play,input,cut;
-    int score = 1000;
+    int score;
+
     double a = 0.1;
 
 
@@ -41,49 +42,55 @@ public class MainActivity extends AppCompatActivity {
         play = (Button)findViewById(R.id.play);
         input = (Button)findViewById(R.id.inp);
         cut = (Button)findViewById(R.id.con);
-        String end = getResources().getQuantityString(R.plurals.money, score, score);
 
-        Toast.makeText(this,getResources().getString(R.string.Bonus),Toast.LENGTH_LONG).show();
+        //получем данные
+        Bundle arguments = getIntent().getExtras();
+        //score = arguments.getInt(magazine.SCORE_MAGAZINE);
 
+
+
+        boolean bonus = false;
+        bonus = arguments.getBoolean(card.BONUS_CARD);
+        if (!bonus) {
+            Toast.makeText(this, getResources().getString(R.string.Bonus), Toast.LENGTH_LONG).show();
+            String stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
+            score1.setText(getResources().getString(R.string.Balance) + " " + stavka1);
+            score += 1000;}
+        else {
+            score = arguments.getInt(card.SCORE_CARD);
+        }
         String stavka1 = getResources().getQuantityString(R.plurals.money, score, score);
         score1.setText(getResources().getString(R.string.Balance) + " " + stavka1);
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+        return super.onCreateOptionsMenu(menu);}
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
         switch (id){
-
             // Переход в магазин
             case R.id.main_magazine:
                 Intent intent = new Intent(this, magazine.class);
                 intent.putExtra(SCORE,score);
                 startActivity(intent);
                 return true;
-
             // переход в рейтинг
             case R.id.lider_board:
                 Intent intent1 = new Intent(this, lider_board.class);
                 intent1.putExtra(SCORE,score);
                 startActivity(intent1);
                 return true;
-
             // о корпорации
             case R.id.corporation:
                 Intent intent2 = new Intent(this, corporations.class);
                 startActivity(intent2);
                 return true;
-
         }
-        return super.onOptionsItemSelected(item);
-    }
+        return super.onOptionsItemSelected(item);}
 
     public int Random(int score){
         int max=100;
@@ -122,17 +129,15 @@ public class MainActivity extends AppCompatActivity {
             int score_qest = score - stavka;
             if(score_qest < 0 || stavka < 100 ) {
                 Toast.makeText(this, getResources().getString(R.string.error_messege), Toast.LENGTH_LONG).show();
-                return;
-            }
+                return;}
         }catch (NumberFormatException e){
             Toast.makeText(this,getResources().getString(R.string.error_messege),Toast.LENGTH_LONG).show();
             itog.setText("");
-            return;
-        }
-        int itog_stavka =  Math.abs(Random(stavka));
+            return;}
+        int itog_stavka = Math.abs(Random(stavka));
 
         String stavka1 = getResources().getQuantityString(R.plurals.money, itog_stavka, itog_stavka);
-        Random objGenerator =  new Random();
+        Random objGenerator = new Random();
         int randomNumber = 0;
         randomNumber = objGenerator.nextInt(4);
 
