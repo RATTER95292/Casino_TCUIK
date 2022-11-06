@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".lider_board">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -19,4 +23,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fastScrollEnabled="true"
+            android:fastScrollAlwaysVisible="true"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
